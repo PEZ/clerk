@@ -2,6 +2,8 @@
 
 A ClojureScript library designed to make it easy to get your Single Page Application to behave more like a ”regular” site would do when it comes to navigating between, and within, pages.
 
+[![Clojars Project](https://img.shields.io/clojars/v/pez/clerk.svg)](https://clojars.org/pez/clerk)
+
 Clerk takes care of the scroll positioning when:
 * Navigating to a new page, e.g. if the user clicks a link to another page.
   * Scroll is set to the top of the page in these cases.

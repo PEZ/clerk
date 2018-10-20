@@ -2,6 +2,29 @@
 
 A ClojureScript library designed to make it easy to get your Single Page Application to behave more like a ”regular” site would do when it comes to navigating between, and within, pages.
 
+Clerks takes care of the scroll positioning when:
+* Navigating to a new page, e.g. if the user clicks a link to another page.
+  * Scroll is set to the top of the page in these cases.
+* Navigation to target anchors within the page.
+  * Scroll is smoothly adjusted to the top of the target element.
+  * _This only works if the routing library you are using supports hash targets._ Secretary doesn't really. But Bidi does.
+* Navigating back/forth using the web browser history navigation.
+  * Scroll position is restored to whatever it was when the user left it.
+
+Clerk does not deal with anything else beside of the above. Use it together wih your routing and HTML5 history libararies of choice.
+
+## The Problem
+Today's web browsers handles all this automatic scroll positioniing perfectly for regular sites. But the S in SPA really means that everything happens on the same page, even if it looks to the user as if navigatin between pages happens. A new page is just the result of rendering new content. So without managing the scroll positioning we have this Ux problem:
+
+<a href="Without Clerk.png"><img alt="Without Clerk" src="Without Clerk.png" width="80%"/></a>
+
+In addition to this:
+
+* The browser's default scroll restoration for history navigation can't be trusted within an SPA. It sometimes looks like it works, but then comes with big time surprises at other times.
+* In-page mavigation to anchor targets doesn't happen at all unless we add code for it.
+
+Let Clerk take care of all this for you!
+
 ## Usage
 
 Add the dependency:
@@ -23,13 +46,13 @@ Initialize as early as possible when your app is starting:
 (clerk/initialize!)
 ```
 
-### After navigation dispatch
+### After Navigation Dispatch
 After any routing/navigation dispatch of your app you need to tell Clerk about the new path
 ```clojure
 (clerk/navigate-page! path)
 ```
 
-### After render
+### After Render
 Then just one more thing. To avoid flicker, Clerk deferrs scroll adjustment until after the page is rendered. You need to tell Clerk when rendering is done:
 ```clojure
 (clerk/after-render!)
@@ -68,6 +91,8 @@ The Leiningen Reagent template's `init!` function will look lie so with all cler
   (accountant/dispatch-current!)
   (mount-root))
 ```
+
+(For Rum it will look very similar, except that you need to use a mixin for your page component's `:after-render`callback instead of using the `reagent/after-render`.)
 
 ## Caveats
 

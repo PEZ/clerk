@@ -1,4 +1,4 @@
-(defproject pez/clerk "0.1.0"
+(defproject pez/clerk "0.1.0-SNAPSHOT"
   :description "In-page navigation for Single-Page Applications (mimicing Multi-Page Site scrolling)"
   :url "https://github.com/PEZ/clerk"
   :license {:name "Eclipse Public License"

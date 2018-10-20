@@ -29,7 +29,7 @@ Let Clerk take care of all this for you!
 
 Add the dependency:
 ```clojure
-[pez/clerk "0.1.0"]
+[pez/clerk "0.1.0-SNAPSHOT"]
 ```
 
 The examples in this README assumes Clerk is required like so:

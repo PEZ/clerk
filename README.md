@@ -9,7 +9,7 @@ Clerk takes care of the scroll positioning when:
   * Scroll is set to the top of the page in these cases.
 * Navigation to target anchors within the page.
   * Scroll is smoothly adjusted to the top of the target element.
-  * _This only works if the routing library you are using supports hash targets._ Secretary doesn't really. But Bidi does.
+  * _This only works if the routing library you are using supports hash targets._ [Secretary](https://github.com/gf3/secretary) doesn't really. But [Bidi](https://github.com/juxt/bidi) does.
 * Navigating back/forth using the web browser history navigation.
   * Scroll position is restored to whatever it was when the user left it.
 
@@ -23,7 +23,7 @@ Today's web browsers handles all this automatic scroll positioniing perfectly fo
 In addition to this:
 
 * The browser's default scroll restoration for history navigation can't be trusted within an SPA. It sometimes looks like it works, but then comes with big time surprises at other times.
-* In-page mavigation to anchor targets doesn't happen at all unless we add code for it.
+* In-page navigation to anchor targets doesn't happen at all unless we add code for it.
 
 Let Clerk take care of all this for you!
 

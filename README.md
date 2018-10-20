@@ -103,7 +103,7 @@ The Leiningen [Reagent template](https://github.com/reagent-project/reagent-temp
 
 ## What About the Name?
 
-*In Scotland, the term scrow was used from about the 13th to the 17th centuries for scroll, writing, or documents in list or schedule form. There existed an office of Clerk of the Scrow (Rotulorum Clericus) meaning the Clerk of the Rolls or Clerk of the Register.* (From [WikiPedia].(https://en.wikipedia.org/wiki/Scroll#Scotland))
+*In Scotland, the term scrow was used from about the 13th to the 17th centuries for scroll, writing, or documents in list or schedule form. There existed an office of Clerk of the Scrow (Rotulorum Clericus) meaning the Clerk of the Rolls or Clerk of the Register.* (From [WikiPedia](https://en.wikipedia.org/wiki/Scroll#Scotland).)
 
 Also, it is quite beautiful to imagine that with some projects maybe [Secretary](https://github.com/gf3/secretary), [Accountant](https://github.com/venantius/accountant) and Clerk will work together to get the SPA to behave according to the expectations of its users.
 

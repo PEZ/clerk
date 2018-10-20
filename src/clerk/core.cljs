@@ -128,24 +128,31 @@
     200)))
 
 
-(defn any-deferred-page-navigation-fn!
-  "Use this when page rendering is done.
-  If there is any outstanding page navigation you'll get a function back
-  that you should call. If not you'll get nil back."
+(defn after-render!
+  "Call this after the page has rendered to perform any deferred
+   page-navigation (i.e. scrolling)."
   []
-  (a/poll! deferred-navigation-chan))
+  (when-let [page-nav-fn (a/poll! deferred-navigation-chan)]
+    (page-nav-fn)))
 
 
 (defn reagent-mount-page
-  "Utility page component for reagent projects"
+  "Utility page component for reagent projects. Consider using
+   `reagent/after-render instead. See README."
   [render-fn]
-  (let [after-render-fn (fn [_ & _]
-                          (when-let [page-nav-fn (any-deferred-page-navigation-fn!)]
-                            (page-nav-fn)))]
+  (let [after-render-fn (fn [_ & _] (after-render!))]
     {:display-name         "current-page"
      :component-did-mount  after-render-fn
      :component-did-update after-render-fn
      :reagent-render       render-fn}))
+
+
+(def rum-after-render
+  "Utility. Rum mixin."
+  {:after-render
+   (fn [state]
+     (after-render!)
+     state)})
 
 
 (defn navigate-page!

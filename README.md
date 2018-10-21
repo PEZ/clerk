@@ -31,7 +31,7 @@ Let Clerk take care of all this for you!
 
 Add the dependency:
 ```clojure
-[pez/clerk "0.1.0-SNAPSHOT"]
+[pez/clerk "0.1.1-SNAPSHOT"]
 ```
 
 The examples in this README assumes Clerk is required like so:
@@ -98,8 +98,8 @@ The Leiningen [Reagent template](https://github.com/reagent-project/reagent-temp
 
 ## Caveats
 
-**IMPORTANT**: If you are using some kind of analytics (like Google Analytics) for stats on site usage for your SPA, take care with any history change events resulting in ”virtual” page hits. Clerk uses the browser's history state to store the current scroll position for the page. Specifically, *the default History Change Trigger of Google Tag Manager can't be used as is*. You risk spamming your stats with ”page views” that really are just the user scrolling.
-
+* **IMPORTANT**: If you are using some kind of analytics (like Google Analytics) for stats on site usage for your SPA, take care with any history change events resulting in ”virtual” page hits. Clerk uses the browser's history state to store the current scroll position for the page. Specifically, *the default History Change Trigger of Google Tag Manager can't be used as is*. You risk spamming your stats with ”page views” that really are just the user scrolling.
+* Clerk depeds on HTML 5 history and does not handle routing that rely on prefixing route paths with '#'. If you still need to target browsers that do not have HTML 5 history: no Clerk for you.
 
 ## What About the Name?
 

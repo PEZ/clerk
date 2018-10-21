@@ -4,6 +4,11 @@ All notable changes to Clerk will be (or should be) documented in this file. (I 
 ## [Unreleased]
 Right now, nothing cookin'.
 
+## 0.1.1 - 2018-10-21
+### Fixed
+- Missing dependency on core/async
+
+
 ## 0.1.0 - 2018-10-20
 ### Added
 - Initial release.

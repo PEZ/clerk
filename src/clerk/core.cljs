@@ -136,25 +136,6 @@
     (page-nav-fn)))
 
 
-(defn reagent-mount-page
-  "Utility page component for reagent projects. Consider using
-   `reagent/after-render instead. See README."
-  [render-fn]
-  (let [after-render-fn (fn [_ & _] (after-render!))]
-    {:display-name         "current-page"
-     :component-did-mount  after-render-fn
-     :component-did-update after-render-fn
-     :reagent-render       render-fn}))
-
-
-(def rum-after-render
-  "Utility. Rum mixin."
-  {:after-render
-   (fn [state]
-     (after-render!)
-     state)})
-
-
 (defn navigate-page!
   "Call this on every navigation.
    Navigates the page by scrolling to the appropriate y position. It's either:

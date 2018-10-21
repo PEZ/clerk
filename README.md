@@ -31,7 +31,7 @@ Let Clerk take care of all this for you!
 
 Add the dependency:
 ```clojure
-[pez/clerk "0.1.1-SNAPSHOT"]
+[pez/clerk "1.0.0-SNAPSHOT"]
 ```
 
 The examples in this README assumes Clerk is required like so:
@@ -60,21 +60,26 @@ Then just one more thing. To avoid flicker, Clerk deferrs scroll adjustment unti
 (clerk/after-render!)
 ```
 
-Depending on your project the after render notification will need to be injected in different ways. Here are exemples for two common ClojureScript React frameworks, Rum and Reagent:
+Depending on your project the after render notification will need to be injected in different ways. Here are exemples for two common ClojureScript React frameworks, [Rum](https://github.com/tonsky/rum) and [Reagent](http://reagent-project.github.io):
 
 #### Rum
-Clerk has a utility [Rum](https://github.com/tonsky/rum) mixin for after-render. Use like so:
+Rum has a utility callback `:after-render` that can be used in a mixin for this purpose, like so:
 ```clojure
 (defc page < rum/reactive
-             clerk/rum-after-render
+  {:after-render
+   (fn [state]
+     (after-render!)
+     state)})
   ...
 ```
 
 #### Reagent
-For [Reagent](http://reagent-project.github.io), you can use the `reagent/after-render` function, which calls any function you provide to it when rendering is done:
+For Reagent, you can use the `reagent/after-render` function, which calls any function you provide to it when rendering is done:
 ```clojure
 (reagent/after-render clerk/after-render!)
 ```
+
+(You can also hook it in to the compenent life cycle, `:component-did-mount` and `:component-did-update`, if that suits your project and testes better.)
 
 ### Putting it together
 The Leiningen [Reagent template](https://github.com/reagent-project/reagent-template)'s `init!` function will look like so with all clerky stuff added:

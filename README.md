@@ -77,7 +77,7 @@ For [Reagent](http://reagent-project.github.io), you can use the `reagent/after-
 ```
 
 ### Putting it together
-The Leiningen [Reagent template](https://github.com/reagent-project/reagent-template)'s `init!` function will look lie so with all clerky stuff added:
+The Leiningen [Reagent template](https://github.com/reagent-project/reagent-template)'s `init!` function will look like so with all clerky stuff added:
 ```clojure
 (defn init! []
   (clerk/initialize!)

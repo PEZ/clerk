@@ -1,0 +1,30 @@
+= Example project: Reagent client side routing with Bidi, Accountant and Clerk
+
+A simple example trying to demonstrate a way to do client side routing with
+https://github.com/juxt/bidi[Bidi], https://github.com/venantius/accountant[Accountant] and https://github.com/PEZ/clerk[Clerk] in https://reagent-project.github.io/[Reagent] projects.
+
+I talk considerably more about this example in  https://pez.github.io/2016/03/01/Reagent-clientside-routing-with-Bidi-and-Accountant.html[this blog post]. (Except the Clerk part, which is a later addition.)
+
+## Setup
+
+I have also configured the project to support an  interactive development
+workflow. To start the example run:
+
+    $ lein repl
+
+wait for the `routing-example.user` name space to load and then issue:
+
+    routing-example.user> (start)
+
+Open your browser at http://localhost:4449/[localhost:4449]. You will
+have Figwheel's magic enabled.
+
+If you are using Emacs you can start the repl using `cider-jack-in` and enjoy
+a CIDER enabled development workflow. (This is extra handy for when you are learning
+how to set up Bidi routing tables.)
+
+If you use VS Code I recommend installing https://marketplace.visualstudio.com/items?itemName=cospaia.clojure4vscode[Calva], which will bring you some of the Emacs Cider experience. (Yes, I am biased, I am the publisher of Calva.)
+
+## License
+
+Use however you want, at your own risk.

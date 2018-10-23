@@ -42,7 +42,7 @@
        [:li "Scroll down until you find a link to item " [:strong "50"] " of B. Note which item is at the top of the screen."]
        [:li "Scroll to somewhere else on the page."]
        [:li "Use the the browser's Back and Forward buttons to see if scroll positions are restored correctly."]
-       [:li "Click the " [:strong "Go to bottom/top"] "links in the header and footer of those long pages"]]
+       [:li "Click the " [:strong "Go to bottom/top"] " links in the header and footer of those long pages"]]
       [:p "Now do the above things with Clerk enabled. 😀"]]
      [:h2 "Some more links."]
      [:ul

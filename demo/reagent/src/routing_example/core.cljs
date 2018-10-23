@@ -1,11 +1,7 @@
 (ns routing-example.core
   (:require [reagent.core :as reagent :refer [atom]]
             [reagent.session :as session]
-
             [bidi.bidi :as bidi]
-            ;;[schema.core :as s] ;For when defining routes get tricky
-            ;;[bidi.schema]
-
             [accountant.core :as accountant]
             [clerk.core :as clerk]))
 
@@ -21,20 +17,38 @@
         "missing-route" :missing-route
         true :four-o-four}])
 
-;;(s/check bidi.schema/RoutePair app-routes)
-;;(s/validate bidi.schema/RoutePair app-routes)
+(session/put! :demo-using-clerk? true)
+
+(defn clerk-toggler []
+  [:input {:id :demo-using-clerk?
+           :type "checkbox"
+           :checked (session/get :demo-using-clerk?)
+           :on-change (fn [e]
+                        (session/put! :demo-using-clerk? (not (session/get :demo-using-clerk?))))}])
+
 
 (defmulti page-contents identity)
 
 (defmethod page-contents :index []
   (fn []
     [:span.main
-     [:h1 "Welcome to routing-example"]
+     [:h1 "A silly Clerk Demo"]
+     [:p [:a {:href "https://github.com/PEZ/clerk"} "Clerk"] " is a ClojureScript library designed to make it easy to get your Single Page Application to behave more like a ”regular” site would do when it comes to navigating between, and within, pages."]
+     [:div#try-this-at-home-kids
+      [:h2 "Things you can try:"]
+      [:ol
+       [:li "Disable Clerk --> " [:label [clerk-toggler] "Use Clerk?"]]
+       [:li "Visit " [:a {:href (bidi/path-for app-routes :a-items)} "lots of items of type A"]]
+       [:li "Scroll down until you find a link to item " [:strong "50"] " of B. Note which item is at the top of the screen."]
+       [:li "Scroll to somewhere else on the page."]
+       [:li "Use the the browser's Back and Forward buttons to see if scroll positions are restored correctly."]
+       [:li "Click the " [:strong "Go to bottom/top"] "links in the header and footer of those long pages"]]
+      [:p "Now do the above things with Clerk enabled. 😀"]]
+     [:h2 "Some more links."]
      [:ul
-      [:li [:a {:href (bidi/path-for app-routes :a-items)} "Lots of items of type A"]]
       [:li [:a {:href (bidi/path-for app-routes :b-items)} "Many items of type B"]]
-      [:li [:a {:href (bidi/path-for app-routes :missing-route)} "A Missing Route"]]
-      [:li [:a {:href "/borken/link"} "A Borken Link"]]]
+      [:li [:a {:href (bidi/path-for app-routes :missing-route)} "A Missing Route"] " (This isn't Clerk related, but rather a Bidi thing.)"]
+      [:li [:a {:href "/borken/link"} "A Borken Link"] " (Again, Bidi related.)"]]
      [:p "Using "
       [:a {:href "https://reagent-project.github.io/"} "Reagent"] ", "
       [:a {:href "https://github.com/juxt/bidi"} "Bidi"] ", "
@@ -129,18 +143,13 @@ but it is not."]]))
     (let [page (:current-page (session/get :route))]
       [:div
        [:header
-        [:p#top [:a {:href (bidi/path-for app-routes :index)} "Go home"] " | "
+        [:p [:a {:href (bidi/path-for app-routes :index)} "Go home"] " | "
          [:a {:href (bidi/path-for app-routes :about)} "See about"] " | "
          [:a {:href "#bottom"} "Bottom of page"] " | "
-         [:input {:id :use-clerk?
-                  :type "checkbox"
-                  :checked (session/get :use-clerk?)
-                  :on-change (fn [e]
-                               (session/put! :use-clerk? (not (session/get :use-clerk?))))}]
-         [:label {:for :use-clerk?} "Use Clerk?"]]]
+         [:label [clerk-toggler] " Use Clerk?"]]]
        ^{:key page} [page-contents page]
-       [:footer
-        [:p#bottom [:a {:href (bidi/path-for app-routes :index)} "Go home"] " | "
+       [:footer#bottom
+        [:p [:a {:href (bidi/path-for app-routes :index)} "Go home"] " | "
          [:a {:href (bidi/path-for app-routes :about)} "See about"] " | "
          [:a {:href "#top"} "Top of page"]]]])))
 
@@ -149,19 +158,18 @@ but it is not."]]))
                             (. js/document (getElementById "app"))))
 
 (defn ^:export init! []
-  (session/put! :use-clerk? true)
   (clerk/initialize!)
   (accountant/configure-navigation!
    {:nav-handler (fn
                    [path]
-                   (when (session/get :use-clerk?)
+                   (when (session/get :demo-using-clerk?)
                      (reagent/after-render clerk/after-render!))
                    (let [match (bidi/match-route app-routes path)
                          current-page (:handler match)
                          route-params (:route-params match)]
                      (session/put! :route {:current-page current-page
                                            :route-params route-params}))
-                   (when (session/get :use-clerk?)
+                   (when (session/get :demo-using-clerk?)
                      (clerk/navigate-page! path)))
     :path-exists? (fn [path]
                     (boolean (bidi/match-route app-routes path)))})

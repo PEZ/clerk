@@ -1,4 +1,16 @@
-/* some style */
+body {
+    padding: 1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+    margin-left: 1.5em;
+}
+
+ul li, ol li {
+    text-indent: 0;
+}
+
 ul#menu {
     padding: 0;
 }
@@ -19,3 +31,4 @@ ul#menu li a {
 ul#menu li a:hover {
     color: yellow;;
 }
+

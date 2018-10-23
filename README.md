@@ -1,6 +1,8 @@
 # clerk
 
-A ClojureScript library designed to make it easy to get your Single Page Application to behave more like a ”regular” site would do when it comes to navigating between, and within, pages. Online demo here: [clerk-demo.netlify.com](https://clerk-demo.netlify.com)
+A ClojureScript library designed to make it easy to get your Single Page Application to behave more like a ”regular” site would do when it comes to navigating between, and within, pages.
+
+Online demo here: [clerk-demo.netlify.com](https://clerk-demo.netlify.com)
 
 [![Clojars Project](https://img.shields.io/clojars/v/pez/clerk.svg)](https://clojars.org/pez/clerk)
 

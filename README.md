@@ -123,3 +123,9 @@ Questions, suggestions, PRs. Just throw it at me. File issues at will. You can a
 Copyright © 2018 Peter Strömberg
 
 Distributed under the Eclipse Public License, either version 1.0 or (at your option) any later version.
+
+## Tested with Browserstack
+
+I'm pretty confident about that Clerk works in reasonably modern web browsers, much thanks to [Browserstack](https://browserStack.com).
+
+<a href="https://browserStack.com"><img src="resources/Browserstack-logo.svg" width="360px"/></a>

@@ -45,16 +45,23 @@
        [:li "Click the " [:strong "Go to bottom/top"] " links in the header and footer of those long pages"]]
       [:p "Now do the above things with Clerk enabled. 😀"]]
      [:h2 "Some more links."]
-     [:ul
-      [:li [:a {:href (bidi/path-for app-routes :b-items)} "Many items of type B"]]
-      [:li [:a {:href (bidi/path-for app-routes :missing-route)} "A Missing Route"] " (This isn't Clerk related, but rather a Bidi thing.)"]
-      [:li [:a {:href "/borken/link"} "A Borken Link"] " (Again, Bidi related.)"]]
-     [:p "Using "
-      [:a {:href "https://reagent-project.github.io/"} "Reagent"] ", "
-      [:a {:href "https://github.com/juxt/bidi"} "Bidi"] ", "
-      [:a {:href "https://github.com/venantius/accountant"} "Accountant"] " & "
-      [:a {:href "https://github.com/PEZ/clerk"} "Clerk"]
-      ". Find this example on " [:a {:href "https://github.com/PEZ/reagent-bidi-accountant-example"} "Github"]]]))
+     [:div
+      [:ul
+       [:li [:a {:href (bidi/path-for app-routes :b-items)} "Many items of type B"]]
+       [:li [:a {:href (bidi/path-for app-routes :missing-route)} "A Missing Route"] " (This isn't Clerk related, but rather a Bidi thing.)"]
+       [:li [:a {:href "/borken/link"} "A Borken Link"] " (Again, Bidi related.)"]]]
+     [:div
+      [:p "Using "
+       [:a {:href "https://reagent-project.github.io/"} "Reagent"] ", "
+       [:a {:href "https://github.com/juxt/bidi"} "Bidi"] ", "
+       [:a {:href "https://github.com/venantius/accountant"} "Accountant"] " & "
+       [:a {:href "https://github.com/PEZ/clerk"} "Clerk"]
+       ". Want to start off your next project using these libraries? Take a look at " [:a {:href "https://github.com/PEZ/reagent-bidi-accountant-example"} "Github"]]
+      [:div
+       [:p "For developing Clerk, I have made good use of " [:a {:href "https://browserstack.com"} "Browserstack"]]
+       [:a {:href "https://browserstack.com"}
+        [:img {:src "images/Browserstack-logo.svg"
+               :width "240px"}]]]]]))
 
 
 (defmethod page-contents :a-items []

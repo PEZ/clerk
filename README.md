@@ -33,7 +33,7 @@ Let Clerk take care of all this for you!
 
 Add the dependency:
 ```clojure
-[pez/clerk "1.0.0-SNAPSHOT"]
+[pez/clerk "1.0.0"]
 ```
 
 The examples in this README assumes Clerk is required like so:
@@ -102,6 +102,10 @@ The Leiningen [Reagent template](https://github.com/reagent-project/reagent-temp
 ```
 
 (For Rum it will look very similar, except that you need to use a mixin for your page component's `:after-render`callback instead of using the `reagent/after-render`.)
+
+### It is not Always this Simple
+Registering `clerk/after-render!` on the ”page component” or on navigation dispatch is not sufficient for some applications. Some pages get loaded and rendered in phases and for some apps it can take quite a while before they have all the data they need to render the final page. (And lots of other cases.) Finding the right entry point to inject the Clerk functions/commands will sometimes be a challenge. I am very interested to hear about challanges and solutions!
+
 
 ## Caveats
 

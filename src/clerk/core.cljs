@@ -1,15 +1,15 @@
-(ns ^{:doc "Clerk: In-page navigation (scrolling) for SPAs.
-  Tries to mimic the default browser behaviour for ”regular” sites.
-  Use Clerk together with your router and HTML5 history manager of choice.
-            
-  New navigxation history entries are always scrolled to the hash target in the location,
-  or, when the target is missing, the top of the page.
-  When the user is navigating to existing history entries we restore the scroll position.
-  The reason for this is that the browser's own restoration is not timed with the rendering
-  of the page and this crates a 'jumpy' experience. Unfortunately only Chrome supports a
-  reliable way to disable the browser's scroll restoration, but at least there we can create a
-  smooth scroll restoration experience."}
- clerk.core
+(ns clerk.core
+  {:doc "Clerk: In-page navigation (scrolling) for SPAs.
+    Tries to mimic the default browser behaviour for ”regular” sites.
+    Use Clerk together with your router and HTML5 history manager of choice.
+              
+    New navigxation history entries are always scrolled to the hash target in the location,
+    or, when the target is missing, the top of the page.
+    When the user is navigating to existing history entries we restore the scroll position.
+    The reason for this is that the browser's own restoration is not timed with the rendering
+    of the page and this crates a 'jumpy' experience. Unfortunately only Chrome supports a
+    reliable way to disable the browser's scroll restoration, but at least there we can create a
+    smooth scroll restoration experience."}
   (:require
    [goog.events :as events]
    [goog.events.EventType :as EventType]
@@ -20,7 +20,8 @@
   (:import goog.Uri))
 
 
-(def ^:private current-path (atom (.-pathname js/location)))
+(def ^:private state (atom {:current-path (.-pathname js/location)
+                            :options {}}))
 
 
 (def ^:private deferred-navigation-chan (a/chan (a/sliding-buffer 1)))
@@ -150,10 +151,10 @@
   (assert (string? url))
   (let [uri (.parse Uri url)
         path (.getPath uri)
-        old-path (.getPath (.parse Uri @current-path))
+        old-path (.getPath (.parse Uri (:current-path @state)))
         same-page? (= path old-path)
         fragment (not-empty (.getFragment uri))]
-    (reset! current-path path)
+    (swap! state assoc :current-path path)
     (if-let [y (get-history-scroll-top)]
       (if same-page?
         (smooth-scroll-to y)
@@ -170,7 +171,11 @@
 
 
 (defn initialize!
-  "Call when your app is starting."
-  []
-  (disable-default-scroll-restoration)
-  (install-scroll-saver))
+  "Call when your app is starting." 
+  ([]
+   (println "Why no options?")
+   (initialize! {:foo :bar}))
+  ([options]
+   (swap! state assoc :options options)
+   (disable-default-scroll-restoration)
+   (install-scroll-saver)))

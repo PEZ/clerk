@@ -1,5 +1,5 @@
 (ns routing-example.user
-  (:use [figwheel-sidecar.repl-api :as ra]))
+  (:require [figwheel-sidecar.repl-api :as ra]))
 
 (defn start []
   (ra/start-figwheel!)

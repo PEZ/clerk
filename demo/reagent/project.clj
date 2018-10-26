@@ -23,17 +23,16 @@
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
 
   :profiles {:dev
-             {:source-paths ["dev"]
-              :dependencies [[prismatic/schema "1.1.7"]]}
+             {:source-paths ["dev"]}
              :repl {:plugins [[cider/cider-nrepl "0.18.0"]]
                     :dependencies [[nrepl "0.4.5"]
-                                   [cider/piggieback "0.3.9"]
+                                   [cider/piggieback "0.3.8"]
                                    [figwheel-sidecar "0.5.16"]]}}
 
 
   :cljsbuild {:builds
               {:dev
-               {:source-paths ["src"]
+               {:source-paths ["src"  "../../src"]
 
                 :figwheel {:on-jsload "routing-example.core/on-js-reload"
                            :websocket-host :js-client-host}

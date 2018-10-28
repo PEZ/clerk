@@ -81,7 +81,7 @@ For Reagent, you can use the `reagent/after-render` function, which calls any fu
 (reagent/after-render clerk/after-render!)
 ```
 
-(You can also hook it in to the compenent life cycle, `:component-did-mount` and `:component-did-update`, if that suits your project and testes better.)
+(You can also hook it in to the compenent life cycle, `:component-did-mount` and `:component-did-update`, if that suits your project and taste better.)
 
 ### Putting it together
 The Leiningen [Reagent template](https://github.com/reagent-project/reagent-template)'s `init!` function will look like so with all clerky stuff added:
@@ -132,4 +132,4 @@ Distributed under the Eclipse Public License, either version 1.0 or (at your opt
 
 I'm pretty confident about that Clerk works in reasonably modern web browsers, much thanks to [Browserstack](https://browserStack.com).
 
-<a href="https://browserStack.com"><img src="resources/Browserstack-logo.svg" width="360px"/></a>
+<a href="https://browserStack.com"><img src="resources/Browserstack-logo.svg" width="240px"/></a>

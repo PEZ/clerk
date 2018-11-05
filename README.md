@@ -31,12 +31,22 @@ Let Clerk take care of all this for you!
 
 ## Usage
 
+A super easy way to try out Clerk in a new project is to use the [Leingen Reagent Template](https://github.com/reagent-project/reagent-template):
+
+```bash
+$ lein new reagent <project-name>
+```
+
+For other scenarious, read on.
+
+### Setup
+
 Add the dependency:
 ```clojure
 [pez/clerk "1.0.0"]
 ```
 
-The examples in this README assumes Clerk is required like so:
+For the instructions below, I will assume Clerk is required like so:
 ```clojure
 (:require
  ...
@@ -45,7 +55,7 @@ The examples in this README assumes Clerk is required like so:
 ```
 
 ### Initialize
-Initialize as early as possible when your app is starting:
+Initialize Clerk as early as possible when your app is starting:
 ```clojure
 (clerk/initialize!)
 ```
@@ -118,7 +128,7 @@ Registering `clerk/after-render!` on the ”page component” or on navigation d
 
 Also, it is quite beautiful to imagine that with some projects maybe [Secretary](https://github.com/gf3/secretary), [Accountant](https://github.com/venantius/accountant) and Clerk will work together to get the SPA to behave according to the expectations of its users.
 
-## Feedback Welcome
+## Happy Coding ❤️ Feedback Welcome
 
 Questions, suggestions, PRs. Just throw it at me. File issues at will. You can also most often find me at the [Clojurians Slack](https://clojurians.slack.com). Have praise? Tweet it! Tag [@pappapez](https://twitter.com/pappapez).
 

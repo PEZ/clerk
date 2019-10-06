@@ -15,7 +15,7 @@
                  [bidi "2.1.4"]
                  [venantius/accountant "0.2.4"]]
 
-  :plugins [[lein-figwheel "0.5.16"]
+  :plugins [[lein-figwheel "0.5.18"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]]
 
   :source-paths ["src" "../../src"]
@@ -24,11 +24,7 @@
 
   :profiles {:dev
              {:source-paths ["dev"]
-              :dependencies [[prismatic/schema "1.1.7"]]}
-             :repl {:plugins [[cider/cider-nrepl "0.18.0"]]
-                    :dependencies [[nrepl "0.4.5"]
-                                   [cider/piggieback "0.3.9"]
-                                   [figwheel-sidecar "0.5.16"]]}}
+              :dependencies [[prismatic/schema "1.1.7"]]}}
 
 
   :cljsbuild {:builds

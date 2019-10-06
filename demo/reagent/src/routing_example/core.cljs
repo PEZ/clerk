@@ -26,7 +26,6 @@
            :on-change (fn [e]
                         (session/put! :demo-using-clerk? (not (session/get :demo-using-clerk?))))}])
 
-
 (defmulti page-contents identity)
 
 (defmethod page-contents :index []

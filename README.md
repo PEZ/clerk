@@ -124,7 +124,7 @@ Registering `clerk/after-render!` on the ”page component” or on navigation d
 
 ## What About the Name?
 
-*In Scotland, the term scrow was used from about the 13th to the 17th centuries for scroll, writing, or documents in list or schedule form. There existed an office of Clerk of the Scrow (Rotulorum Clericus) meaning the Clerk of the Rolls or Clerk of the Register.* (From [WikiPedia](https://en.wikipedia.org/wiki/Scroll#Scotland).)
+*In Scotland, the term scrow was used from about the 13th to the 17th centuries for scroll, writing, or documents in list or schedule form. There existed an office of Clerk of the Scrow (Rotulorum Clericus) meaning the Clerk of the Rolls or Clerk of the Register.* (From [Wikipedia](https://en.wikipedia.org/wiki/Scroll#Scotland).)
 
 Also, it is quite beautiful to imagine that with some projects maybe [Secretary](https://github.com/gf3/secretary), [Accountant](https://github.com/venantius/accountant) and Clerk will work together to get the SPA to behave according to the expectations of its users.
 
@@ -140,6 +140,6 @@ Distributed under the Eclipse Public License, either version 1.0 or (at your opt
 
 ## Tested with Browserstack
 
-I'm pretty confident about that Clerk works in reasonably modern web browsers, much thanks to [Browserstack](https://browserStack.com).
+I'm pretty confident about that Clerk works in reasonably modern web browsers, much thanks to [BrowserStack](https://browserStack.com).
 
 <a href="https://browserStack.com"><img src="resources/Browserstack-logo.svg" width="240px"/></a>

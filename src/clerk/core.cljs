@@ -2,7 +2,7 @@
   Tries to mimic the default browser behaviour for ”regular” sites.
   Use Clerk together with your router and HTML5 history manager of choice.
             
-  New navigxation history entries are always scrolled to the hash target in the location,
+  New navigation history entries are always scrolled to the hash target in the location,
   or, when the target is missing, the top of the page.
   When the user is navigating to existing history entries we restore the scroll position.
   The reason for this is that the browser's own restoration is not timed with the rendering

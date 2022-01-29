@@ -18,7 +18,7 @@ Clerk takes care of the scroll positioning when:
 Clerk does not deal with anything else beside the above. Use it together wih your routing and HTML5 history libararies of choice.
 
 ## The Problem
-Today's web browsers handles all this automatic scroll positioniing perfectly for regular sites. But the S in SPA really means that everything happens on the same page, even if it looks to the user as if navigatin between pages happens. A new page is just the result of rendering new content. So without managing the scroll positioning we have this Ux problem:
+Today's web browsers handle all this automatic scroll positioning perfectly for regular sites. But the S in SPA really means that everything happens on the same page, even if it looks to the user as if navigatin between pages happens. A new page is just the result of rendering new content. So without managing the scroll positioning we have this UX problem:
 
 <a href="Without Clerk.png"><img alt="Without Clerk" src="Without Clerk.png" width="100%"/></a>
 
